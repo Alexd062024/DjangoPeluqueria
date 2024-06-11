@@ -1,0 +1,16 @@
+{% extends "users/base.html" %}
+{% block title %}Perfil de usuario{% endblock %}
+{% block content %}
+<p>Bienvenido, {{ user.username }}!</p>
+<div class="row">
+    <div class="col-md-6">
+        <h2>Agendar Turno</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ turno_form.as_p }}
+            <button type="submit" class="btn btn-primary">Agendar Turno</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
