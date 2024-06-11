@@ -9,7 +9,6 @@ body {
 
 .container {
     display: flex;
-    height: 100vh;
 }
 
 .sidebar {
@@ -17,11 +16,13 @@ body {
     background-color: black;
     color: white;
     padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
 .sidebar h2 {
-    margin-top: 0;
-}
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;}
 
 .sidebar ul {
     list-style-type: none;
@@ -43,10 +44,8 @@ body {
 }
 
 .main-content {
-    flex-grow: 1;
+    flex: 1;
     padding: 20px;
-    background-color: #8B0000;;
-    color: white;
 }
 
 .title {
