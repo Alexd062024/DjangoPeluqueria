@@ -1,0 +1,55 @@
+/* users/static/users/css/styles.css */
+
+body {
+    font-family: 'Rock Salt', cursive;
+    background-color: #8B0000;;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none; /* Quitar subrayado */
+    transition: color 0.3s; /* Agregar una transición suave */
+}
+
+.sidebar ul li a:hover {
+    color: #ff0000; /* Cambiar a rojo al pasar el mouse */
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #8B0000;;
+    color: white;
+}
+
+.title {
+    font-size: 2em;
+    margin-top: 0;
+}

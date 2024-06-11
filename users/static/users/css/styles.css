@@ -1,0 +1,74 @@
+body {
+    background-color: #8B0000; /* Rojo oscuro */
+    color: #fff;
+    font-family: 'Rock Salt', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+@keyframes neon-border {
+    5%, 100% {
+        box-shadow: 0 0 5px #FF0000, 0 0 10px #FF0000, 0 0 20px #FF0000, 0 0 40px #FF0000;
+    }
+    50% {
+        box-shadow: 0 0 20px #FF0000, 0 0 40px #FF0000, 0 0 60px #FF0000, 0 0 80px #FF0000;
+    }
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.5em;
+    background-color: #fff;
+    color: #8B0000;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ccc;
+}
+.neon-box {
+    background-color: #000;
+    padding: 30px;
+    animation: neon-glow 1.0s infinite alternate; /* Nueva animación */
+}
+
+@keyframes neon-glow {
+    5% {
+        box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+    }
+    100% {
+        box-shadow: none; /* Apaga el efecto */
+    }
+}
+
+.neon-text {
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+}
