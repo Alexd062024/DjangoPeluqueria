@@ -14,6 +14,8 @@ class Turno(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     fecha = models.DateTimeField()
     observacion = models.CharField(max_length=100)
+    precio = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
         return f"{self.cliente.nombre} - {self.fecha.strftime('%Y-%m-%d %H:%M')}"
+    

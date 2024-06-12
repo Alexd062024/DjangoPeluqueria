@@ -1,5 +1,5 @@
 body {
-    background-color: #8B0000; /* Rojo oscuro */
+    background-color: #8B0000 !important; /* Rojo oscuro */
     color: #fff;
     font-family: cursive;
     display: flex;

@@ -1,4 +1,5 @@
 {% extends "users/base.html" %}
+{% load crispy_forms_tags %}
 {% block title %}Perfil de usuario{% endblock %}
 {% block content %}
 <h2 class="mt-5">Turnos Agendados</h2>
@@ -9,6 +10,7 @@
                 <th>Cliente</th>
                 <th>Fecha</th>
                 <th>Observación</th>
+                <th>Precio</th> <!-- Nueva columna para el precio -->
             </tr>
         </thead>
         <tbody>
@@ -17,6 +19,7 @@
                     <td>{{ turno.cliente.nombre }}</td>
                     <td>{{ turno.fecha }}</td>
                     <td>{{ turno.observacion }}</td>
+                    <td>{{ turno.precio }}</td> <!-- Mostrar el precio -->
                 </tr>
             {% endfor %}
         </tbody>
