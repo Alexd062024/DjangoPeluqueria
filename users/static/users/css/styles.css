@@ -1,5 +1,5 @@
 body {
-    background-color: #8B0000 !important; /* Rojo oscuro */
+    background-color: #8B0000 !important;
     color: #fff;
     font-family: cursive;
     display: flex;
@@ -54,7 +54,7 @@ body {
 .neon-box {
     background-color: #000;
     padding: 30px;
-    animation: neon-glow 1.0s infinite alternate; /* Nueva animación */
+    animation: neon-glow 1.0s infinite alternate;
 }
 
 @keyframes neon-glow {
@@ -62,7 +62,7 @@ body {
         box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
     }
     100% {
-        box-shadow: none; /* Apaga el efecto */
+        box-shadow: none;
     }
 }
 
