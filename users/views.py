@@ -39,6 +39,10 @@ def home(request):
     return render(request, 'users/home.html')
 
 
+def inventario(request):
+    return render(request, 'users/inventario.html')
+
+
 def dashboard(request):
     turnos = Turno.objects.all()
     return render(request, 'users/dashboard.html', {
