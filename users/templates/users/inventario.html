@@ -4,20 +4,89 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inventario</title>
+        {% load static %}
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <!-- Tipografia -->
         <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
         <!-- CSS General -->
-        <link rel="stylesheet" href="/users/static/users/css/styles.css">
+        <link rel="stylesheet" href="{% static 'users/css/styles.css' %}">
     </head>
     <body>
+        <section class="container-fluid">
+            <h1 class="title">Inventario</h1>
+            <p class="">Productos registrados en el inventario</p>
+            <button class="btn mb-3" style="width: 200px">Nuevo Producto</button>
+            
+            <div>
+                <table class="table table-light table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Producto</th>
+                            <th>Categoria</th>
+                            <th>Descripcion</th>
+                            <th>Vencimiento</th>
+                            <th>Cant. Disponible</th>
+                            <th>Venta</th>
+                            <th>Acciones</th> <!-- Contiene los botones de editar y eliminar para cada item-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-detalle">Detalles</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Info que muestra cuando presiona en "detalle" -->
+            <div id="modal-detalle" class="modal fade">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <!-- modal header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title text-dark">Nombre del Producto</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- modal body-->
+                        <div class="modal-body text-dark">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="http://via.placeholder.com/200x200" alt="Imagen del producto">
+                                </div>
+                                <div class="col-9">
+                                    <ul>
+                                        <li>Compra</li>
+                                        <li>Tipo</li>
+                                        <li>Adquisicion</li>
+                                        <li>Marca</li>
+                                        <li>Proveedor</li>
+                                        <li>Notas</li>
+                                        <li>Codigo de barras</li> <!-- modal con qr o imagen del codigo-->
+                                        <li>Acciones</li> <!-- Contiene los botones de editar y eliminar para cada item-->
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <!-- modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
         <section>
             <h1 class="title">Inventario</h1>
-            <!-- card item del inventario -->
             <div class="card d-flex">
                 <div class="card-header">
-                    <img src="http://via.placeholder.com/200x200" alt="Imagen del producto">
+                    
                     <h2 class="card-title">Titulo del producto</h3>
                     <span class="badge badge-primary">Categoria</span>
                     <p class="card-text">Descripcion: Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga a consectetur amet adipisci ducimus recusandae aperiam beatae incidunt eius et maxime officiis eaque repellat, reprehenderit neque vero? Quo, corporis odio.</p>
@@ -28,7 +97,6 @@
 
                 <div class="card-body collapse" id="info">
                     <p>Precio de Compra</p> 
-                <!-- Info que aparece solo si presiona el boton de ver mas -->
                     <p>ID</p>
                     <p>Tipo de unidad de medida</p>
                     <p>Ubicacion del almacen</p>
@@ -45,6 +113,7 @@
                 </div>
             </div>
         </section>
+        -->
 
         <!-- jQuery library -->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
