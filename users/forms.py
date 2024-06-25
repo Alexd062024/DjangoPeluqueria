@@ -1,7 +1,7 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
-from .models import Cliente, Turno
+from .models import Cliente, Turno, Producto
 
 class ClienteForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -34,4 +34,13 @@ class TurnoForm(forms.ModelForm):
             'fecha': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
             'observacion': forms.Select(choices=[('alisado', 'Alisado'), ('corte', 'Corte'), ('tintura', 'Tintura')], attrs={'class': 'form-control'}),
             'precio': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
+
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = ['nombre', 'categoria', 'descripcion', 'fecha_vencimiento', 'cantidad_disponible', 'precio_venta', 'compra', 'tipo', 'adquisicion', 'marca', 'proveedor', 'notas', 'codigo_barras', 'imagen']
+        widgets = {
+            'fecha_vencimiento': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'precio_venta': forms.NumberInput(attrs={'class': 'form-control'}),
         }

@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from .models import Cliente, Turno
-from .forms import ClienteForm, TurnoForm
+from .models import Cliente, Turno, Producto
+from .forms import ClienteForm, TurnoForm, ProductoForm
 from django.contrib import messages
 
 
@@ -40,7 +40,18 @@ def home(request):
 
 
 def inventario(request):
-    return render(request, 'users/inventario.html')
+    if request.method == 'POST':
+        form = ProductoForm(request.POST, request.FILES)
+        if form.is_valid():
+            print('llegue aqui')
+            form.save()
+            return redirect('inventario')
+    else:
+        form = ProductoForm()
+        
+    productos = Producto.objects.all()
+    print(productos)
+    return render(request, 'users/inventario.html', {'productos': productos, 'form': form})
 
 
 def dashboard(request):
@@ -48,3 +59,12 @@ def dashboard(request):
     return render(request, 'users/dashboard.html', {
                 'turnos': turnos,
                 })
+
+
+def eliminar_producto(request, producto_id):
+    producto = get_object_or_404(Producto, pk=producto_id)
+    if request.method == 'POST':
+        producto.delete()
+        return redirect('inventario')
+    return render(request, 'users/inventario.html', {'eliminar_producto': producto})
+
