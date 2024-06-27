@@ -60,3 +60,19 @@ class ProductoForm(forms.ModelForm):
             'codigo_barras': forms.TextInput(attrs={'class': 'form-control'}),
             'imagen': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
         }
+        labels = {
+            'nombre': 'Nombre del Producto',
+            'categoria': 'Categoría',
+            'descripcion': 'Descripción',
+            'fecha_vencimiento': 'Fecha de Vencimiento',
+            'cantidad_disponible': 'Cantidad Disponible',
+            'precio_venta': 'Precio de Venta',
+            'compra': 'Precio de Compra',
+            'tipo': 'Tipo de Producto',
+            'adquisicion': 'Método de Adquisición',
+            'marca': 'Marca',
+            'proveedor': 'Proveedor',
+            'notas': 'Notas',
+            'codigo_barras': 'Código de Barras',
+            'imagen': 'Imagen del Producto',
+        }
