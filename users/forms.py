@@ -39,8 +39,24 @@ class TurnoForm(forms.ModelForm):
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ['nombre', 'categoria', 'descripcion', 'fecha_vencimiento', 'cantidad_disponible', 'precio_venta', 'compra', 'tipo', 'adquisicion', 'marca', 'proveedor', 'notas', 'codigo_barras', 'imagen']
+        fields = [
+            'nombre', 'categoria', 'descripcion', 'fecha_vencimiento',
+            'cantidad_disponible', 'precio_venta', 'compra', 'tipo',
+            'adquisicion', 'marca', 'proveedor', 'notas', 'codigo_barras', 'imagen'
+        ]
         widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'categoria': forms.Select(attrs={'class': 'form-control'}),
+            'descripcion': forms.Textarea(attrs={'class': 'form-control'}),
             'fecha_vencimiento': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'cantidad_disponible': forms.NumberInput(attrs={'class': 'form-control'}),
             'precio_venta': forms.NumberInput(attrs={'class': 'form-control'}),
+            'compra': forms.NumberInput(attrs={'class': 'form-control'}),
+            'tipo': forms.Select(attrs={'class': 'form-control'}),
+            'adquisicion': forms.Select(attrs={'class': 'form-control'}),
+            'marca': forms.TextInput(attrs={'class': 'form-control'}),
+            'proveedor': forms.TextInput(attrs={'class': 'form-control'}),
+            'notas': forms.Textarea(attrs={'class': 'form-control'}),
+            'codigo_barras': forms.TextInput(attrs={'class': 'form-control'}),
+            'imagen': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
         }
