@@ -86,61 +86,68 @@
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data" action="{% url 'inventario' %}">
                     {% csrf_token %}
-                    <div class="form-group">
-                        {{ form.nombre.label_tag }}
-                        {{ form.nombre }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.categoria.label_tag }}
-                        {{ form.categoria }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.descripcion.label_tag }}
-                        {{ form.descripcion }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.fecha_vencimiento.label_tag }}
-                        {{ form.fecha_vencimiento }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.cantidad_disponible.label_tag }}
-                        {{ form.cantidad_disponible }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.precio_venta.label_tag }}
-                        {{ form.precio_venta }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.compra.label_tag }}
-                        {{ form.compra }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.tipo.label_tag }}
-                        {{ form.tipo }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.adquisicion.label_tag }}
-                        {{ form.adquisicion }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.marca.label_tag }}
-                        {{ form.marca }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.proveedor.label_tag }}
-                        {{ form.proveedor }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.notas.label_tag }}
-                        {{ form.notas }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.codigo_barras.label_tag }}
-                        {{ form.codigo_barras }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.imagen.label_tag }}
-                        {{ form.imagen }}
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                {{ form.nombre.label_tag }}
+                                {{ form.nombre }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.categoria.label_tag }}
+                                {{ form.categoria }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.descripcion.label_tag }}
+                                {{ form.descripcion }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.fecha_vencimiento.label_tag }}
+                                {{ form.fecha_vencimiento }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.cantidad_disponible.label_tag }}
+                                {{ form.cantidad_disponible }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.precio_venta.label_tag }}
+                                {{ form.precio_venta }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.compra.label_tag }}
+                                {{ form.compra }}
+                            </div>
+                        </div>
+                    
+                    <div class="col">
+                        <div class="form-group">
+                            {{ form.tipo.label_tag }}
+                            {{ form.tipo }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.adquisicion.label_tag }}
+                            {{ form.adquisicion }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.marca.label_tag }}
+                            {{ form.marca }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.proveedor.label_tag }}
+                            {{ form.proveedor }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.notas.label_tag }}
+                            {{ form.notas }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.codigo_barras.label_tag }}
+                            {{ form.codigo_barras }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.imagen.label_tag }}
+                            {{ form.imagen }}
+                        </div>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
