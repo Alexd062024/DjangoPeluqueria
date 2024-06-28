@@ -53,7 +53,7 @@ class ProductoForm(forms.ModelForm):
             'precio_venta': forms.NumberInput(attrs={'class': 'form-control'}),
             'compra': forms.NumberInput(attrs={'class': 'form-control'}),
             'tipo': forms.Select(attrs={'class': 'form-control'}),
-            'adquisicion': forms.Select(attrs={'class': 'form-control'}),
+            'adquisicion': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             'marca': forms.TextInput(attrs={'class': 'form-control', 'rows': '4'}),
             'proveedor': forms.TextInput(attrs={'class': 'form-control'}),
             'notas': forms.Textarea(attrs={'class': 'form-control'}),
