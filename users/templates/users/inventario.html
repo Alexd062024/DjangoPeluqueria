@@ -5,7 +5,7 @@
     <p>Productos registrados en el inventario</p>
     <button type="button" class="btn btn-light mb-3 align-self-start" data-toggle="modal" data-target="#modal-nuevo-producto">Nuevo Producto</button>
     
-    <table class="table table-light table-hover table-bordered">
+    <table class="table table-light table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>
@@ -29,7 +29,7 @@
                 <td>{{ producto.cantidad_disponible }}</td>
                 <td>{{ producto.precio_venta }}</td>
                 <td>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-detalle-{{ producto.id }}">Detalles</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-detalle-{{ producto.id }}">Detalles</button>
                     <button type="button" class="btn btn-danger" onclick="confirmarEliminar('{{ producto.id }}')">Eliminar</button>
                 </td>
             </tr>
@@ -50,16 +50,31 @@
                                     <img src="http://via.placeholder.com/200x200" alt="Imagen del producto" class="img-fluid">
                                     {% endif %}
                                 </div>
-                                <div class="col-9">
-                                    <ul>
-                                        <li>Compra: {{ producto.compra }}</li>
-                                        <li>Tipo: {{ producto.tipo }}</li>
-                                        <li>Adquisición: {{ producto.adquisicion }}</li> <!-- A mi parecer, adquisicion es una fecha y no un metodo)? -->
-                                        <li>Marca: {{ producto.marca }}</li>
-                                        <li>Proveedor: {{ producto.proveedor }}</li>
-                                        <li>Notas: {{ producto.notas }}</li>
-                                        <li>Código de barras: {{ producto.codigo_barras }}</li>
-                                    </ul>
+                                <div class="col-9 ">
+                                    <dl>
+                                        <dt>Descripcion:</dt>
+                                        <dd>{{ producto.descripcion}}</dd>
+                                        <dt>Categoria:</dt>
+                                        <dd>{{ producto.categoria}}</dd>
+                                        <dt>Unidad de Medida:</dt>
+                                        <dd>{{ producto.tipo }}</dd>
+                                        <dt>Fecha de Adquisición:</dt>
+                                        <dd>{{ producto.adquisicion }}</dd>
+                                        <dt>Fecha de Vencimiento:</dt>
+                                        <dd>{{ producto.fecha_vencimiento}}</dd>
+                                        <dt>Precio de Compra:</dt>
+                                        <dd>{{ producto.compra }}</dd>
+                                        <dt>Precio de Venta:</dt>
+                                        <dd>{{ producto.precio_venta}}</dd>
+                                        <dt>Marca:</dt>
+                                        <dd>{{ producto.marca }}</dd>
+                                        <dt>Proveedor:</dt>
+                                        <dd>{{ producto.proveedor }}</dd>
+                                        <dt>Código de barras:</dt>
+                                        <dd>{{ producto.codigo_barras }}</dd>
+                                        <dt>Notas:</dt>
+                                        <dd>{{ producto.notas }}</dd>
+                                    </dl>
                                 </div>
                             </div>
                         </div>
@@ -147,8 +162,9 @@
                         </div>
                         </div>
                     </div>
+                    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
                 </form>
-                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                
             </div>
         </div>
     </div>
