@@ -1,83 +1,81 @@
 {% extends "users/base.html" %}
 {% block content %}
-<div class="row" style="display:block">
-    <h1 class="title">Inventario</h1><br><br>
+<div class="row d-flex flex-column" id="inventario">
+    <h1 class="title text-center text-light">Inventario</h1><br><br>
     <p>Productos registrados en el inventario</p>
-    <button style="margin:1%" type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-nuevo-producto">Nuevo Producto</button>
+    <button type="button" class="btn btn-light mb-3 align-self-start" data-toggle="modal" data-target="#modal-nuevo-producto">Nuevo Producto</button>
     
-    <div>
-        <table class="table table-light table-hover table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Producto</th>
-                    <th>Categoria</th>
-                    <th>Descripcion</th>
-                    <th>Vencimiento</th>
-                    <th>Cant. Disponible</th>
-                    <th>Venta</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for producto in productos %}
-                <tr>
-                    <td>{{ producto.id }}</td>
-                    <td>{{ producto.nombre }}</td>
-                    <td>{{ producto.categoria }}</td>
-                    <td>{{ producto.descripcion }}</td>
-                    <td>{{ producto.fecha_vencimiento }}</td>
-                    <td>{{ producto.cantidad_disponible }}</td>
-                    <td>{{ producto.precio_venta }}</td>
-                    <td>
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-detalle-{{ producto.id }}">Detalles</button>
-                        <button type="button" class="btn btn-danger" onclick="confirmarEliminar('{{ producto.id }}')">Eliminar</button>
-                    </td>
-                </tr>
-                <!-- Modal de Detalles -->
-                <div id="modal-detalle-{{ producto.id }}" class="modal fade">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title text-dark">{{ producto.nombre }}</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body text-dark">
-                                <div class="row">
-                                    <div class="col-3">
-                                        {% if producto.imagen %}
-                                        <img src="{{ producto.imagen.url }}" alt="Imagen del producto" class="img-fluid">
-                                        {% else %}
-                                        <img src="http://via.placeholder.com/200x200" alt="Imagen del producto" class="img-fluid">
-                                        {% endif %}
-                                    </div>
-                                    <div class="col-9">
-                                        <ul>
-                                            <li>Compra: {{ producto.compra }}</li>
-                                            <li>Tipo: {{ producto.tipo }}</li>
-                                            <li>Adquisición: {{ producto.adquisicion }}</li>
-                                            <li>Marca: {{ producto.marca }}</li>
-                                            <li>Proveedor: {{ producto.proveedor }}</li>
-                                            <li>Notas: {{ producto.notas }}</li>
-                                            <li>Código de barras: {{ producto.codigo_barras }}</li>
-                                        </ul>
-                                    </div>
+    <table class="table table-light table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Categoria</th>
+                <th>Descripcion</th>
+                <th>Vencimiento</th>
+                <th>Cant. Disponible</th>
+                <th>Venta</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto.id }}</td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.categoria }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.fecha_vencimiento }}</td>
+                <td>{{ producto.cantidad_disponible }}</td>
+                <td>{{ producto.precio_venta }}</td>
+                <td>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-detalle-{{ producto.id }}">Detalles</button>
+                    <button type="button" class="btn btn-danger" onclick="confirmarEliminar('{{ producto.id }}')">Eliminar</button>
+                </td>
+            </tr>
+            <!-- Modal de Detalles -->
+            <div id="modal-detalle-{{ producto.id }}" class="modal fade">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title text-dark">{{ producto.nombre }}</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body text-dark">
+                            <div class="row">
+                                <div class="col-3">
+                                    {% if producto.imagen %}
+                                    <img src="{{ producto.imagen.url }}" alt="Imagen del producto" class="img-fluid">
+                                    {% else %}
+                                    <img src="http://via.placeholder.com/200x200" alt="Imagen del producto" class="img-fluid">
+                                    {% endif %}
+                                </div>
+                                <div class="col-9">
+                                    <ul>
+                                        <li>Compra: {{ producto.compra }}</li>
+                                        <li>Tipo: {{ producto.tipo }}</li>
+                                        <li>Adquisición: {{ producto.adquisicion }}</li> <!-- A mi parecer, adquisicion es una fecha y no un metodo)? -->
+                                        <li>Marca: {{ producto.marca }}</li>
+                                        <li>Proveedor: {{ producto.proveedor }}</li>
+                                        <li>Notas: {{ producto.notas }}</li>
+                                        <li>Código de barras: {{ producto.codigo_barras }}</li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 <!-- Modal de Nuevo Producto -->
 <div id="modal-nuevo-producto" class="modal fade">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Nuevo Producto</h4>
@@ -101,32 +99,24 @@
                                 {{ form.descripcion }}
                             </div>
                             <div class="form-group">
-                                {{ form.fecha_vencimiento.label_tag }}
-                                {{ form.fecha_vencimiento }}
+                                {{ form.tipo.label_tag }}
+                                {{ form.tipo }}
                             </div>
                             <div class="form-group">
                                 {{ form.cantidad_disponible.label_tag }}
                                 {{ form.cantidad_disponible }}
                             </div>
                             <div class="form-group">
-                                {{ form.precio_venta.label_tag }}
-                                {{ form.precio_venta }}
+                                {{ form.adquisicion.label_tag }}
+                                {{ form.adquisicion }}
                             </div>
                             <div class="form-group">
-                                {{ form.compra.label_tag }}
-                                {{ form.compra }}
+                                {{ form.fecha_vencimiento.label_tag }}
+                                {{ form.fecha_vencimiento }}
                             </div>
                         </div>
                     
                     <div class="col">
-                        <div class="form-group">
-                            {{ form.tipo.label_tag }}
-                            {{ form.tipo }}
-                        </div>
-                        <div class="form-group">
-                            {{ form.adquisicion.label_tag }}
-                            {{ form.adquisicion }}
-                        </div>
                         <div class="form-group">
                             {{ form.marca.label_tag }}
                             {{ form.marca }}
@@ -136,8 +126,12 @@
                             {{ form.proveedor }}
                         </div>
                         <div class="form-group">
-                            {{ form.notas.label_tag }}
-                            {{ form.notas }}
+                            {{ form.precio_venta.label_tag }}
+                            {{ form.precio_venta }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.compra.label_tag }}
+                            {{ form.compra }}
                         </div>
                         <div class="form-group">
                             {{ form.codigo_barras.label_tag }}
@@ -147,10 +141,14 @@
                             {{ form.imagen.label_tag }}
                             {{ form.imagen }}
                         </div>
+                        <div class="form-group">
+                            {{ form.notas.label_tag }}
+                            {{ form.notas }}
+                        </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
+                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
             </div>
         </div>
     </div>

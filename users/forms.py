@@ -54,11 +54,11 @@ class ProductoForm(forms.ModelForm):
             'compra': forms.NumberInput(attrs={'class': 'form-control'}),
             'tipo': forms.Select(attrs={'class': 'form-control'}),
             'adquisicion': forms.Select(attrs={'class': 'form-control'}),
-            'marca': forms.TextInput(attrs={'class': 'form-control', 'rows': '4'}),
+            'marca': forms.TextInput(attrs={'class': 'form-control'}),
             'proveedor': forms.TextInput(attrs={'class': 'form-control'}),
-            'notas': forms.Textarea(attrs={'class': 'form-control'}),
+            'notas': forms.Textarea(attrs={'class': 'form-control', 'rows': '4'}),
             'codigo_barras': forms.TextInput(attrs={'class': 'form-control'}),
-            'imagen': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
+            'imagen': forms.ClearableFileInput(attrs={'class': 'form-control-file', 'width': '200', 'height': '200'}),
         }
         labels = {
             'nombre': 'Nombre del Producto',
@@ -69,7 +69,7 @@ class ProductoForm(forms.ModelForm):
             'precio_venta': 'Precio de Venta',
             'compra': 'Precio de Compra',
             'tipo': 'Tipo de Producto',
-            'adquisicion': 'Método de Adquisición',
+            'adquisicion': 'Fecha de adquisición',
             'marca': 'Marca',
             'proveedor': 'Proveedor',
             'notas': 'Notas',
