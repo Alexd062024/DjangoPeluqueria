@@ -1,0 +1,42 @@
+{% extends "users/base.html" %}
+
+{% block content %}
+<h1>Historial de Uso de Productos</h1>
+
+<form method="get" class="mb-4">
+    <div class="form-row">
+        <div class="col">
+            <input type="date" name="fecha_inicio" value="{{ fecha_inicio }}" class="form-control">
+        </div>
+        <div class="col">
+            <input type="date" name="fecha_fin" value="{{ fecha_fin }}" class="form-control">
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </div>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad Usada</th>
+            <th>Fecha de Uso</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for uso in usos %}
+        <tr>
+            <td>{{ uso.producto.nombre }}</td>
+            <td>{{ uso.cantidad_usada }}</td>
+            <td>{{ uso.fecha_uso|date:"Y-m-d H:i" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No se encontraron registros de uso en este período.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

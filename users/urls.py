@@ -10,6 +10,8 @@ urlpatterns = [
     path('turnos/', views.turnos, name='turnos'),
     path('inventario/', views.inventario, name='inventario'),
     path('eliminar/<int:producto_id>/', views.eliminar_producto, name='eliminar_producto'),
+    path('registrar-uso-producto/', views.registrar_uso_producto, name='registrar_uso_producto'),
+    path('historial-uso', views.historial_uso, name='historial_uso'),
     ]
 
 if settings.DEBUG:

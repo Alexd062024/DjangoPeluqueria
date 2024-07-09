@@ -1,7 +1,7 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
-from .models import Cliente, Turno, Producto
+from .models import Cliente, Turno, Producto, UsoProducto
 
 class ClienteForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -46,14 +46,15 @@ class ProductoForm(forms.ModelForm):
         ]
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'categoria': forms.Select(attrs={'class': 'form-control'}),
+            'categoria': forms.TextInput(attrs={'class': 'form-control'}),  # Cambiado a TextInput
             'descripcion': forms.Textarea(attrs={'class': 'form-control', 'rows': '4'}),
             'fecha_vencimiento': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             'cantidad_disponible': forms.NumberInput(attrs={'class': 'form-control'}),
             'precio_venta': forms.NumberInput(attrs={'class': 'form-control'}),
             'compra': forms.NumberInput(attrs={'class': 'form-control'}),
-            'tipo': forms.Select(attrs={'class': 'form-control'}),
-            'marca': forms.TextInput(attrs={'class': 'form-control', 'rows': '4'}),
+            'tipo': forms.TextInput(attrs={'class': 'form-control'}),  # Cambiado a TextInput
+            'adquisicion': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),  # Cambiado a DateInput
+            'marca': forms.TextInput(attrs={'class': 'form-control'}),
             'proveedor': forms.TextInput(attrs={'class': 'form-control'}),
             'notas': forms.Textarea(attrs={'class': 'form-control', 'rows': '4'}),
             'codigo_barras': forms.TextInput(attrs={'class': 'form-control'}),
@@ -75,3 +76,24 @@ class ProductoForm(forms.ModelForm):
             'codigo_barras': 'Código de Barras',
             'imagen': 'Imagen del Producto',
         }
+        def clean(self):
+            cleaned_data = super().clean()
+            if cleaned_data.get('precio_venta') and cleaned_data.get('compra'):
+                if cleaned_data['precio_venta'] <= cleaned_data['compra']:
+                    raise forms.ValidationError("El precio de venta debe ser mayor que el precio de compra.")
+            return cleaned_data
+    
+
+class UsoProductoForm(forms.ModelForm):
+    producto = forms.ModelChoiceField(
+        queryset=Producto.objects.all(),
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+    cantidad_usada = forms.IntegerField(
+        widget=forms.NumberInput(attrs={'class': 'form-control'})
+    )
+
+    class Meta:
+        model = UsoProducto
+        fields = ['producto', 'cantidad_usada']
+    

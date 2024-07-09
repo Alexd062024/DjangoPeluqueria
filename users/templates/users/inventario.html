@@ -3,8 +3,10 @@
 <div class="row d-flex flex-column" id="inventario">
     <h1 class="title text-center text-light">Inventario</h1><br><br>
     <p>Productos registrados en el inventario</p>
-    <button type="button" class="btn btn-light mb-3 align-self-start" data-toggle="modal" data-target="#modal-nuevo-producto">Nuevo Producto</button>
-    
+    <div>
+        <button type="button" class="btn btn-light mb-3 align-self-start" data-toggle="modal" data-target="#modal-nuevo-producto">Nuevo Producto</button>
+        <button type="button" class="btn btn-success mb-3 align-self-start" data-toggle="modal" data-target="#modal-uso-producto">Registrar Uso</button>
+    </div>
     <table class="table table-light table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -99,75 +101,190 @@
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data" action="{% url 'inventario' %}">
                     {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 {{ form.nombre.label_tag }}
                                 {{ form.nombre }}
+                                {% if form.nombre.errors %}
+                                    <div class="text-danger">{{ form.nombre.errors }}</div>
+                                {% endif %}
                             </div>
                             <div class="form-group">
                                 {{ form.categoria.label_tag }}
                                 {{ form.categoria }}
+                                {% if form.categoria.errors %}
+                                    <div class="text-danger">{{ form.categoria.errors }}</div>
+                                {% endif %}
                             </div>
                             <div class="form-group">
                                 {{ form.descripcion.label_tag }}
                                 {{ form.descripcion }}
+                                {% if form.descripcion.errors %}
+                                    <div class="text-danger">{{ form.descripcion.errors }}</div>
+                                {% endif %}
                             </div>
                             <div class="form-group">
                                 {{ form.tipo.label_tag }}
                                 {{ form.tipo }}
+                                {% if form.tipo.errors %}
+                                    <div class="text-danger">{{ form.tipo.errors }}</div>
+                                {% endif %}
                             </div>
                             <div class="form-group">
                                 {{ form.cantidad_disponible.label_tag }}
                                 {{ form.cantidad_disponible }}
+                                {% if form.cantidad_disponible.errors %}
+                                    <div class="text-danger">{{ form.cantidad_disponible.errors }}</div>
+                                {% endif %}
                             </div>
                             <div class="form-group">
                                 {{ form.adquisicion.label_tag }}
                                 {{ form.adquisicion }}
+                                {% if form.adquisicion.errors %}
+                                    <div class="text-danger">{{ form.adquisicion.errors }}</div>
+                                {% endif %}
                             </div>
                             <div class="form-group">
                                 {{ form.fecha_vencimiento.label_tag }}
                                 {{ form.fecha_vencimiento }}
+                                {% if form.fecha_vencimiento.errors %}
+                                    <div class="text-danger">{{ form.fecha_vencimiento.errors }}</div>
+                                {% endif %}
                             </div>
                         </div>
                     
-                    <div class="col">
-                        <div class="form-group">
-                            {{ form.marca.label_tag }}
-                            {{ form.marca }}
-                        </div>
-                        <div class="form-group">
-                            {{ form.proveedor.label_tag }}
-                            {{ form.proveedor }}
-                        </div>
-                        <div class="form-group">
-                            {{ form.precio_venta.label_tag }}
-                            {{ form.precio_venta }}
-                        </div>
-                        <div class="form-group">
-                            {{ form.compra.label_tag }}
-                            {{ form.compra }}
-                        </div>
-                        <div class="form-group">
-                            {{ form.codigo_barras.label_tag }}
-                            {{ form.codigo_barras }}
-                        </div>
-                        <div class="form-group">
-                            {{ form.imagen.label_tag }}
-                            {{ form.imagen }}
-                        </div>
-                        <div class="form-group">
-                            {{ form.notas.label_tag }}
-                            {{ form.notas }}
-                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                {{ form.marca.label_tag }}
+                                {{ form.marca }}
+                                {% if form.marca.errors %}
+                                    <div class="text-danger">{{ form.marca.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.proveedor.label_tag }}
+                                {{ form.proveedor }}
+                                {% if form.proveedor.errors %}
+                                    <div class="text-danger">{{ form.proveedor.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.precio_venta.label_tag }}
+                                {{ form.precio_venta }}
+                                {% if form.precio_venta.errors %}
+                                    <div class="text-danger">{{ form.precio_venta.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.compra.label_tag }}
+                                {{ form.compra }}
+                                {% if form.compra.errors %}
+                                    <div class="text-danger">{{ form.compra.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.codigo_barras.label_tag }}
+                                {{ form.codigo_barras }}
+                                {% if form.codigo_barras.errors %}
+                                    <div class="text-danger">{{ form.codigo_barras.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.imagen.label_tag }}
+                                {{ form.imagen }}
+                                {% if form.imagen.errors %}
+                                    <div class="text-danger">{{ form.imagen.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.notas.label_tag }}
+                                {{ form.notas }}
+                                {% if form.notas.errors %}
+                                    <div class="text-danger">{{ form.notas.errors }}</div>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Guardar</button>
                 </form>
-                
             </div>
         </div>
     </div>
 </div>
+<!-- Modal de Registro de Producto -->
+<div id="modal-uso-producto" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Registrar uso de producto</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{% url 'registrar_uso_producto' %}">
+                    {% csrf_token %}
+                    {% if uso_form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ uso_form.non_field_errors }}
+                        </div>
+                    {% endif %}
+                    <div class="form-group">
+                        {{ uso_form.producto.label_tag }}
+                        {{ uso_form.producto }}
+                        {% if uso_form.producto.errors %}
+                            <div class="text-danger">{{ uso_form.producto.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ uso_form.cantidad_usada.label_tag }}
+                        {{ uso_form.cantidad_usada }}
+                        {% if uso_form.cantidad_usada.errors %}
+                            <div class="text-danger">{{ uso_form.cantidad_usada.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    console.log('jQuery version:', $.fn.jquery);
+    console.log('$ function:', typeof $);
+    console.log('$.ajax function:', typeof $.ajax);
+
+    $('#modal-uso-producto form').on('submit', function(e) {
+        e.preventDefault();
+        console.log('Form submitted');
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(response) {
+                console.log('Ajax success:', response);
+                if (response.success) {
+                    alert('Uso del producto registrado correctamente.');
+                    $('#modal-uso-producto').modal('hide');
+                    location.reload();
+                } else {
+                    alert('Error: ' + response.error);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('Ajax error:', textStatus, errorThrown);
+                alert('Ocurrió un error al procesar la solicitud.');
+            }
+        });
+    });
+});
+</script>
 {% endblock %}
 
