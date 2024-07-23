@@ -5,11 +5,16 @@ body {
     padding: 0;
 }
 
+textarea {
+    resize: none;
+}
+
 .container {
     display: flex;
 }
 
-h2, p {
+
+h2, p, .form-fechas-filtro {
     color:white;
 
 }
@@ -53,7 +58,7 @@ h2, p {
 
 .title {
     font-size: 2em;
-    margin-top: 0;
+    margin: 0.5em 0 1.5em 0;
 }
 
 .table-responsive {

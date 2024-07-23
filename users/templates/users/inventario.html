@@ -1,8 +1,8 @@
 {% extends "users/base.html" %}
 {% block content %}
-<div class="row d-flex flex-column" id="inventario">
-    <h1 class="title text-center text-light">Inventario</h1><br><br>
-    <p>Productos registrados en el inventario</p>
+<div class="row" id="inventario">
+    <h1 class="title text-center text-light col-12">Inventario</h1><br><br>
+    <p class="col-12">Productos registrados en el inventario</p>
     <div>
         <button type="button" class="btn btn-light mb-3 align-self-start" data-toggle="modal" data-target="#modal-nuevo-producto">Nuevo Producto</button>
         <button type="button" class="btn btn-success mb-3 align-self-start" data-toggle="modal" data-target="#modal-uso-producto">Registrar Uso</button>
@@ -20,7 +20,7 @@
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
             {% for producto in productos %}
             <tr>
                 <td>{{ producto.id }}</td>
@@ -89,6 +89,11 @@
             {% endfor %}
         </tbody>
     </table>
+    <!-- Alerta para cuando se crea correctamente un item -->
+    <!-- <div class="alert alert-success alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p class="text-success">El producto fue creado <strong class="text-success">con Exito!</strong></p>
+    </div> -->
 </div>
 <!-- Modal de Nuevo Producto -->
 <div id="modal-nuevo-producto" class="modal fade">
@@ -99,7 +104,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data" action="{% url 'inventario' %}">
+                <form method="POST" enctype="multipart/form-data" action="{% url 'inventario' %}" class="needs-validation">
                     {% csrf_token %}
                     {% if form.non_field_errors %}
                         <div class="alert alert-danger">
@@ -211,7 +216,9 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                    <div class="row d-flex pr-3">
+                        <button type="submit" class="btn btn-primary col-2 ml-auto">Guardar</button>
+                    </div>
                 </form>
             </div>
         </div>
