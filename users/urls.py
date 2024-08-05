@@ -1,10 +1,11 @@
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('registro/', views.registro, name='registro'),
     path('turnos/', views.turnos, name='turnos'),

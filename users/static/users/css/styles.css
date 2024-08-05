@@ -1,7 +1,6 @@
 body {
     background-color: #8B0000 !important;
     color: #fff;
-    font-family: cursive;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,7 +67,7 @@ body {
 
 .card {
     margin: auto;
-    color: #000;
+    color: white;
     width: 50%;
 }
 

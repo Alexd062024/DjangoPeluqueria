@@ -40,7 +40,7 @@ def registro(request):
     })
 
 def home(request):
-    return render(request, 'users/home.html')
+    return render(request, 'users/login.html')
 
 
 def inventario(request):
