@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}La Peluquería del Rock{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -13,14 +13,19 @@
     <div class="container">
         <div class="sidebar">
             <h2>Menú</h2>
-            <ul class="d-flex flex-wrap flex-column align-items-center">
-                <li><a href="{% url 'dashboard' %}" >Dashboard</a></li>
-                <li><a href="{% url 'turnos' %}" >Agendar turnos</a></li>
-                <li><a href="{% url 'registro' %}" >Registro de clientes</a></li>
-                <li><a href="{% url 'inventario' %}" >Control de inventarios</a></li>
-                <li><a href="{% url 'historial_uso' %}" >Historial de uso</a></li>
-                <li><a href="#" >Facturación simple</a></li>
-            </ul>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse d-lg-block" id="sidebarMenu">
+                <ul class="d-flex flex-wrap flex-column align-items-center">
+                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'turnos' %}">Agendar turnos</a></li>
+                    <li><a href="{% url 'registro' %}">Registro de clientes</a></li>
+                    <li><a href="{% url 'inventario' %}">Control de inventarios</a></li>
+                    <li><a href="{% url 'historial_uso' %}">Historial de uso</a></li>
+                    <li><a href="#">Facturación simple</a></li>
+                </ul>
+            </div>
         </div>
         <div class="main-content inventario">
             {% block content %}
@@ -62,7 +67,7 @@
                 }
             }
         });
-        </script>
+    </script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

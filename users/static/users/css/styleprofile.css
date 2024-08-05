@@ -11,19 +11,20 @@ textarea {
 
 .container {
     display: flex;
+    flex-wrap: wrap;
 }
-
 
 h2, p, .form-fechas-filtro {
-    color:white;
-
+    color: white;
 }
+
 .sidebar {
-    width: 250px;
     background-color: black;
     color: white;
     padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    height: auto;
 }
 
 .sidebar h2 {
@@ -55,8 +56,8 @@ h2, p, .form-fechas-filtro {
     transform-origin: 0% 50%;
 }
 
-.sidebar ul li.fromLeft:after{
-    transform-origin:  100% 50%;
+.sidebar ul li.fromLeft:after {
+    transform-origin: 100% 50%;
 }
 
 .sidebar ul li a {
@@ -69,10 +70,10 @@ h2, p, .form-fechas-filtro {
     color: #ff0000;
 }
 
-
 .main-content {
     flex: 1;
     padding: 20px;
+    margin-left: 250px;
 }
 
 .title {
@@ -86,4 +87,29 @@ h2, p, .form-fechas-filtro {
 
 .table-hover tbody tr:hover {
     background-color: rgba(255, 0, 0, 0.2);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .navbar-toggler {
+        display: block;
+        color: white;
+    }
+
+    .collapse.navbar-collapse {
+        background-color: black;
+    }
 }
